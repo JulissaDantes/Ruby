@@ -1,0 +1,737 @@
+
+maze = [" "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "," "," "," "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "]
+#		 0   1   2           \n5                   \n10                                      \n20                                      \n30                              40               
+def cg_p(i)
+
+#change the maze array character to print with ∎ 
+##debe tener un if si es de los que llevan \n
+if i == 11 || i == 17
+	maze[i]= "∎\n"
+else
+	maze[i]= "∎"
+end
+end
+def pr_maze 
+#prints the current map
+maze.each do number
+print "Este es el mapa que haz recorrido hasta ahora\n"
+puts "#{number}"
+end
+end
+def start
+  puts "You are in a dark maze. Warning!!!! There are 3 bears and 4 masters."
+  puts "There is a door to your right, left and front."
+  puts "Which one do you take?"
+  cg_p(38)
+  
+  while true
+  print ">"
+  choice = $stdin.gets.chomp
+	  if choice == "left" || choice == "l" 
+		r2
+	  elsif choice == "right" || choice == "r" 
+		rr1
+	  elsif choice == "up" || choice == "u" || choice == "front" || choice == "f" 
+		r3
+	  else
+	   puts "You stumble around the room until you starve. Choose something else"
+	  end
+  end
+
+end
+def golden_room
+ map = """
+|_|M|_|_|G|-
+|B---B|_|_|R|
+|_|_|_|_|M|_| 
+|B|R|_|-----
+|_|_|B|_|---
+|M|R|_|_|---
+|_|_|S|R|---
+G-Gold Room
+B-A bear is hidden here
+M-A master is here
+R-A room with a fact
+S-Start
+ """
+	system "cls"
+	cg_p(4)
+	puts "You just find the golden room, congratulations that means you are rich, try hiding from the goverment now"
+	puts "This is the map you just faced: #{map}"
+	
+end
+def r1
+  puts "You are in a boring room."
+  puts "There is a door in the front, and to the left."
+  puts "Which one do you take?"
+  cg_p(36)
+  
+  while true
+  print ">"
+  choice = $stdin.gets.chomp
+  if choice == "right" || choice == "r" 
+	r2
+  elsif choice == "up" || choice == "u" || choice == "front" || choice == "f" 
+	mr1
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+ end
+end
+def r2
+ puts "You are in a another boring room."
+  puts "There is a door in the front, and one door in both sides."
+  puts "Which one do you take?"
+  cg_p(37)
+  
+  
+  while true
+  choice = $stdin.gets.chomp
+  if choice == "left" || choice == "l" 
+	r1
+  elsif choice == "right" || choice == "r" 
+	start
+  elsif choice == "up" || choice == "u" || choice == "front" || choice == "f" 
+	rr2
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  print ">"
+ end
+end
+def r3
+ puts "You are in a boring room."
+  puts "There is a door to every cardinal point"
+  puts "Which one do you take? n, s, w, or e"
+ cg_p(32)
+  while true
+   print ">"
+   choice = $stdin.gets.chomp
+  
+  if choice == "n" 
+	br1
+  elsif choice == "s" 
+	start
+  elsif choice == "w" 
+	rr2
+  elsif choice == "e" 
+	r4
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+ end
+end
+def r4
+ puts "You are in a boring room."
+  puts "There is a door to in the front, back, and to the left."
+  puts "Which one do you take? l, b, or f"
+  cg_p(33)
+  while true
+  print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "left" || choice == "l" 
+	r3
+  elsif choice == "up" || choice == "u" ||  choice == "front" || choice == "f" 
+	r7
+  elsif choice == "down" || choice == "d" ||  choice == "back" || choice == "b" 
+	rr1
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+ end
+end
+def r5
+ puts "You are in a boring room."
+  puts "There is a door to in the front, back, and to the right."
+  puts "Which one do you take?f, b, or r"
+  cg_p(24)
+  print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "right" || choice == "r" 
+	r6
+  elsif choice == "up" || choice == "u" ||  choice == "front" || choice == "f" 
+	br2
+  elsif choice == "down" || choice == "d" ||  choice == "back" || choice == "b" 
+	mr1
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+end
+def r6
+ puts "You are in a boring room."
+  puts "There is a door to every cardinal point"
+ puts "Which one do you take? n, s, w, or e"
+ cg_p(25)
+ while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "n" 
+	rr3
+  elsif choice == "s" 
+	rr2
+  elsif choice == "w" 
+	r5
+  elsif choice == "e" 
+	br1
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+ end
+end
+def r7
+ puts "You are in a boring room."
+  puts "There is a door to the left and behind you."
+  puts "Which one do you take? left or back"
+  cg_p(27)
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "left" 
+	br1
+  elsif choice == "back" 
+	r4
+  else
+   puts "You stumble around the room until you starve because you clearly don´t know how to write"
+  end
+  end
+end
+def r8
+ puts "You are in a boring room."
+  puts "There is a door to the left, in the front and behind you."
+  puts "Which one do you take?l, f, or b"
+  cg_p(20)
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "l" 
+	rr3
+  elsif choice == "f" 
+	r11
+  elsif choice == "b" 
+	br1
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def r9
+ puts "You are in a boring room."
+  puts "There is a door to in the front, behind, and to the right."
+  puts "Which one do you take? front, back, or right"
+  cg_p(12)
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "front" 
+	br3
+  elsif choice == "back" 
+	br2
+  elsif choice == "right" 
+	r10
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def r10
+ puts "You are in a boring room."
+  puts "There is a door to in the behind, and in both sides."
+  puts "Which one do you take? left, right, or back"
+  cg_p(13)
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "left" 
+	r9
+  elsif choice == "right" 
+	r11
+  elsif choice == "back" 
+	rr3
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+ end
+end
+def r11
+ puts "You are in a boring room."
+ cg_p(14)
+  puts "There is a door to every cardinal point"
+  puts "Which one do you take? n, s, w, or e"
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "n" 
+	br4
+  elsif choice == "s" 
+	r8
+  elsif choice == "w" 
+	r10
+  elsif choice == "e" 
+	r12
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def r12
+ puts "You are in a boring room."
+ cg_p(15)
+  puts "There is a door to in the front, and to both sides."
+  puts "Which one do you take? l, r, or f"
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "l" 
+	r11
+  elsif choice == "r" 
+	mr2
+  elsif choice == "f" 
+	r14
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def r13
+ puts "You are in a boring room."
+ cg_p(17)
+  puts "There is a door to in the front, and to the left."
+  puts "Which one do you take? f or l"
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "f" 
+	rr4
+  elsif choice == "l" 
+	mr2
+
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def r14
+ puts "You are in a boring room."
+ cg_p(9)
+ puts "There is a door to every cardinal point"
+ puts "Which one do you take? n, s, w, or e"
+ while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "n" 
+	r18
+  elsif choice == "s" 
+	r12
+  elsif choice == "w" 
+	br4
+  elsif choice == "e" 
+	r15
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def r15
+ puts "You are in a boring room."
+ cg_p(10)
+ puts "There is a door to every cardinal point"
+ puts "Which one do you take? n, s, w, or e"
+while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "n" 
+	gold_room
+  elsif choice == "s" 
+	mr2
+  elsif choice == "w" 
+	r14
+  elsif choice == "e" 
+	rr4
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def r16
+ puts "You are in a boring room. Youmust be tired"
+ cg_p(0)
+ puts "There is a door to in the back, and to the right."
+ puts "Which one do you take?b or r"
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "b" 
+	br3
+  elsif choice == "r" 
+	mr3
+ 
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def r17
+ puts "You are in a boring room."
+ cg_p(2)
+ puts "There is a door to in the back, and to both sides."
+ puts "Which one do you take?b, l or r"
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "b" 
+	br4
+  elsif choice == "r" 
+	r18
+  elsif choice == "l" 
+	mr3
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def r18
+ puts "You are in a boring room."
+ cg_p(3)
+ puts "There is a door to in the back, and to both sides."
+ puts "Which one do you take?b, l or r"
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "b" 
+	r14
+  elsif choice == "l" 
+	r17
+  elsif choice == "r" 
+	golden_room
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def rr1
+system "cls"
+cg_p(39)
+ puts "You are in a stupid room. Since you must be very dumb I will tell you something: Penguings have knees"
+ puts "There is a door to in the front, and to the left."
+ puts "Which one do you take?f or l"
+  
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "f" 
+	r4
+  elsif choice == "l" 
+	start
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def rr2
+ system "cls"
+ cg_p(31)
+ puts "You are in a stupid room. Since you must be very dumb I will tell you something: Female kangaroos have three vaginas"
+  puts "There is a door to every cardinal point."
+  puts "Which one do you take?n, s, w, or e"
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "n" 
+	r6
+  elsif choice == "s" 
+	r2
+  elsif choice == "w" 
+	mr1
+  elsif choice == "e" 
+	r3
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def rr3
+ system "cls"
+ cg_p(19)
+ puts "You are in a stupid room. Since you must be very dumb I will tell you something: Everyone has a unique tongue print"
+ puts "There is a door to every cardinal point."
+ puts "Which one do you take?n, s, w, or e"
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "n" 
+	r10
+  elsif choice == "s" 
+	r6
+  elsif choice == "w" 
+	br2
+  elsif choice == "e" 
+	r8
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def rr4
+ system "cls"
+ cg_p(11)
+ puts "You are in a stupid room. Since you must be very dumb I will tell you something:  The largest snowflake ever recorded reportedly measured 15 inches across."
+ puts "There is a door to in the back, and to the left."
+ puts "Which one do you take?b or l"
+  while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "b" 
+	r13
+  elsif choice == "l" 
+	r15
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def br1
+ system "cls"
+ cg_p(26)
+ puts "You are in a Bear room. What can you grab to kill it?"
+ puts "Knife, spoon, broom"
+ while true 
+ print ">"
+  c1 = $stdin.gets.chomp
+  if c1 == "Knife" || c1 == "knife"
+	puts "You took the knife just to realize the bear is dead. You should have check that first"
+	break
+  elsif c1 == "spoon" || c1 == "Spoon"
+  puts "What were you thinking? The bear ripped your face appart"
+  die_p
+  elsif c1 == "Broom" || c1 == "broom"
+  puts "What were you thinking? The bear ripped your face appart"
+  die_p
+  else
+  
+  end
+ end
+ puts "\nCongratulations, you are alive. There is a door to every cardinal point."
+ puts "Which one do you take?n, s, w, or e"
+ while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "n" 
+	r8
+  elsif choice == "s" 
+	r3
+  elsif choice == "w" 
+	r6
+  elsif choice == "e" 
+	r7
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def br2
+ system "cls"
+ cg_p(18)
+ puts "You are in a Bear room. What can you grab to kill it?"
+ puts "machete, cadaver, candle"
+  while true 
+ print ">"
+  c1 = $stdin.gets.chomp
+  if c1 == "Machete" || c1 == "machete"
+	puts "You took the machete and stabbed that son of a bear."
+	break
+  elsif c1 == "cadaver" 
+  puts "What were you thinking? Feeding the bear?. The bear ripped your arms appart"
+  die_p
+  elsif c1 == "candle"
+  puts "What were you thinking? Burnig the bear down? The bear ripped your face appart"
+  die_p
+  else
+  end
+  end
+ 
+ puts "\nCongratulations, you are alive. There is a door to the front, back, and right"
+ puts "Which one do you take? f, b or r"
+ while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "f" 
+	r9
+  elsif choice == "b" 
+	r5
+  elsif choice == "r" 
+	rr3
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+ end
+end
+def br3
+ system "cls"
+ cg_p(6)
+ puts "You are in a Bear room. What can you grab to kill it?"
+ puts "beer bottle, pen, underwear"
+  while true 
+ print ">"
+  c1 = $stdin.gets.chomp
+  if c1 == "beer bottle"
+	puts "You took the beer bottle and stabbed that son of a bear."
+	break
+  elsif c1 == "pen" 
+  puts "What were you thinking? The bear ripped your arms appart"
+  die_p
+  elsif c1 == "underwear"
+  puts "What were you thinking? The bear ripped your face appart."
+  die_p
+  else
+  
+  end
+ end
+ puts "\nCongratulations, you are alive. There is a door in the front and back"
+ puts "Which one do you take? b or f"
+ while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "b" 
+	r9
+  elsif choice == "f" 
+	r16
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def br4
+ system "cls"
+ cg_p(8)
+ puts "You are in a Bear room. What can you grab to kill it?"
+ puts "CD, mouse, honey"
+ while true 
+ print ">"
+  c1 = $stdin.gets.chomp
+  if c1 == "CD" || c1 == "cd"
+	puts "You took the CD, break it and stab that son of a bear."
+	break
+  elsif c1 == "mouse" 
+  puts "What were you thinking? The bear looked at you with anger and trow you in the air"
+  die_p
+  elsif c1 == "honey"
+  puts "You trow the honey to the bear and the bear goes blind"
+  die_p
+  else
+  end
+  end
+ puts "\n Congratulations, you are alive. You can go up, down or right"
+ puts "Which one do you take?d, u, r"
+ while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "u" 
+	r17
+  elsif choice == "d" 
+	r11
+  elsif choice == "r" 
+	r14
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def mr1
+ system "cls"
+ cg_p(30)
+ puts "You are in a Master room."
+ puts "The master says you should go up"
+ pr_maze
+ puts "There is a door to in the back, front, and to the right."
+ puts "Which one do you take?b, f or r"
+ while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "b" 
+	r1
+  elsif choice == "f" 
+	r5
+  elsif choice == "r" 
+	rr2
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+ end
+end
+def mr2
+ system "cls"
+ cg_p(16)
+ pr_maze
+ puts "You are in a Master room."
+ puts "The master says you should go up"
+ puts "There is a door to in the front, and to booth sides."
+ puts "Which one do you take?l, f or r"
+ 
+ while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+  if choice == "l" 
+	r12
+  elsif choice == "r" 
+	r13
+  elsif choice == "f" 
+	r15
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def mr3
+ system "cls"
+ cg_p(1)
+ pr_maze
+ puts "You are in a Master room."
+ puts "The master says you should go right"
+ puts "There is a door to the left and to the right."
+ puts "Which one do you take?l or r"
+ while true 
+ print ">"
+  choice = $stdin.gets.chomp
+  
+	if choice == "l"  || choice == "left"
+	r16
+  elsif choice == "r" || choice == "right"
+	r17
+  else
+   puts "You stumble around the room until you starve. Choose something else"
+  end
+  end
+end
+def die_p
+	puts "You got yourself killed"
+	puts "The hidden master had mercy on you, you can start over again"
+	puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" * 3
+	start
+end
+start
+  
