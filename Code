@@ -1,25 +1,33 @@
+maze = [" "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "]
+# mapac["∎","∎","∎","∎","∎"," \n","∎"," ","∎","∎","∎","∎\n","∎","∎","∎","∎","∎","∎\n","∎","∎","∎"," "," "," \n","∎","∎","∎","∎"," "," \n","∎","∎","∎","∎"," "," \n","∎","∎","∎","∎"]
+         
+# for number in maze
+# print "#{number}"
+# end 
 
-maze = [" "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "," "," "," "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "]
-#		 0   1   2           \n5                   \n10                                      \n20                                      \n30                              40               
 def cg_p(i)
 
 #change the maze array character to print with ∎ 
 ##debe tener un if si es de los que llevan \n
 if i == 11 || i == 17
-	maze[i]= "∎\n"
+	$maze[i]= "∎\n"
 else
-	maze[i]= "∎"
+	$maze[i]= "∎"
 end
+
 end
 def pr_maze 
 #prints the current map
-maze.each do number
-print "Este es el mapa que haz recorrido hasta ahora\n"
-puts "#{number}"
-end
+puts " "
+puts "MAP:"
+for number in $maze
+print "#{number}"
+end 
+puts " "
 end
 def start
-  puts "You are in a dark maze. Warning!!!! There are 3 bears and 4 masters."
+  puts " "
+  puts "You are in a dark maze. Warning!!!! There are 3 bears, 4 masters, and a bunch of other surprises."
   puts "There is a door to your right, left and front."
   puts "Which one do you take?"
   cg_p(38)
@@ -65,6 +73,7 @@ def r1
   puts "There is a door in the front, and to the left."
   puts "Which one do you take?"
   cg_p(36)
+  pr_maze
   
   while true
   print ">"
@@ -100,7 +109,26 @@ def r2
  end
 end
 def r3
- puts "You are in a boring room."
+ puts "You are in a boring room. But there is a trick, if you don´t answer the next question correctly the master will steal your life"
+ while true
+	puts "Why are there rings on Saturn? Write the letter of the answer\n\ta)God's will\n\tb)Saturn is not a single lady\n\tc)Space dust"
+	print ">"
+	answer = $stdin.gets.chomp
+	if answer == "a"
+	puts "Nice try, but no, that answer won't take you to heaven"
+	die_p
+	elsif answer == "b"
+	puts "Correct"
+	break
+	elsif answer == "c"
+	puts "Silly"
+	die_p
+	else
+	 puts "You are an idiot, type something that makes sense"
+	end
+	
+ end
+ puts ""
   puts "There is a door to every cardinal point"
   puts "Which one do you take? n, s, w, or e"
  cg_p(32)
@@ -126,6 +154,7 @@ def r4
   puts "There is a door to in the front, back, and to the left."
   puts "Which one do you take? l, b, or f"
   cg_p(33)
+  pr_maze
   while true
   print ">"
   choice = $stdin.gets.chomp
@@ -142,10 +171,29 @@ def r4
  end
 end
 def r5
- puts "You are in a boring room."
+ puts "You are in a boring room. But there is a trick, if you don´t answer the next question correctly the master will steal your life"
+ puts "What ended on 1865? Write the letter of the answer\n\ta)1864\n\tb)Yo mama\n\tc)The colony time on DR"
+ while true 
+	print ">"
+	answer = $stdin.gets.chomp
+	if answer == "a"
+	puts "Correct"
+	break
+	elsif answer == "b"
+	puts "Silly"
+	die_p
+	elsif answer == "c"
+	puts "Silly"
+	die_p
+	else
+	 puts "You are an idiot, type something that makes sense"
+	end
+ end
+  cg_p(24)
+  pr_maze
   puts "There is a door to in the front, back, and to the right."
   puts "Which one do you take?f, b, or r"
-  cg_p(24)
+  
   print ">"
   choice = $stdin.gets.chomp
   
@@ -161,9 +209,11 @@ def r5
 end
 def r6
  puts "You are in a boring room."
+ cg_p(25)
+ pr_maze
   puts "There is a door to every cardinal point"
  puts "Which one do you take? n, s, w, or e"
- cg_p(25)
+ 
  while true 
  print ">"
   choice = $stdin.gets.chomp
@@ -183,9 +233,11 @@ def r6
 end
 def r7
  puts "You are in a boring room."
+ cg_p(27)
+ pr_maze
   puts "There is a door to the left and behind you."
   puts "Which one do you take? left or back"
-  cg_p(27)
+  
   while true 
  print ">"
   choice = $stdin.gets.chomp
@@ -200,10 +252,29 @@ def r7
   end
 end
 def r8
- puts "You are in a boring room."
+ puts "You are in a boring room. But there is a trick, if you don´t answer the next question correctly the master will steal your life"
+ puts "The first cell was? Write the letter of the answer\n\ta)Prokaryotic\n\tb)Eukaryotic\n\tc)Lonely"
+ while true 
+	print ">"
+	answer = $stdin.gets.chomp
+	if answer == "a"
+	puts "Silly"
+	die_p
+	elsif answer == "b"
+	puts "Silly"
+	die_p
+	elsif answer == "c"
+	puts "Correct"
+	break
+	else
+	 puts "You are an idiot, type something that makes sense"
+	end
+ end
+  cg_p(20)
+  pr_maze
   puts "There is a door to the left, in the front and behind you."
   puts "Which one do you take?l, f, or b"
-  cg_p(20)
+  
   while true 
  print ">"
   choice = $stdin.gets.chomp
@@ -221,9 +292,10 @@ def r8
 end
 def r9
  puts "You are in a boring room."
+ cg_p(12)
+ pr_maze
   puts "There is a door to in the front, behind, and to the right."
   puts "Which one do you take? front, back, or right"
-  cg_p(12)
   while true 
  print ">"
   choice = $stdin.gets.chomp
@@ -240,10 +312,29 @@ def r9
   end
 end
 def r10
- puts "You are in a boring room."
+  puts "You are in a boring room. But there is a trick, if you don´t answer the next question correctly the master will steal your life"
+ puts "Where is the kinky hair on most women? Write the letter of the answer\n\ta)Armpits\n\tb)On their heaven gates\n\tc)Africa"
+ while true 
+	print ">"
+	answer = $stdin.gets.chomp
+	if answer == "a"
+	puts "Silly"
+	die_p
+	elsif answer == "b"
+	puts "Silly"
+	die_p
+	elsif answer == "c"
+	puts "Correct"
+	break
+	else
+	 puts "You are an idiot, type something that makes sense"
+	end
+ end
+  cg_p(13)
+  pr_maze
   puts "There is a door to in the behind, and in both sides."
   puts "Which one do you take? left, right, or back"
-  cg_p(13)
+  
   while true 
  print ">"
   choice = $stdin.gets.chomp
@@ -262,6 +353,7 @@ end
 def r11
  puts "You are in a boring room."
  cg_p(14)
+ pr_maze
   puts "There is a door to every cardinal point"
   puts "Which one do you take? n, s, w, or e"
   while true 
@@ -282,8 +374,26 @@ def r11
   end
 end
 def r12
- puts "You are in a boring room."
+ puts "You are in a boring room. But there is a trick, if you don´t answer the next question correctly the master will steal your life"
+ puts "A is the father of B. But B is not the son of A. How’s that possible? Write the letter of the answer\n\ta)B is female\n\tb)B is a unicorn\n\tc)I am your father"
+ while true 
+	print ">"
+	answer = $stdin.gets.chomp
+	if answer == "a"
+	puts "Correct"
+	break
+	elsif answer == "b"
+	puts "Silly"
+	die_p
+	elsif answer == "c"
+	puts "Silly, I know my father, who do you thinkI am? Anakin Skywalker?"
+	die_p
+	else
+	 puts "You are an idiot, type something that makes sense"
+	end
+ end
  cg_p(15)
+ pr_maze
   puts "There is a door to in the front, and to both sides."
   puts "Which one do you take? l, r, or f"
   while true 
@@ -303,6 +413,7 @@ def r12
 end
 def r13
  puts "You are in a boring room."
+ pr_maze
  cg_p(17)
   puts "There is a door to in the front, and to the left."
   puts "Which one do you take? f or l"
@@ -321,8 +432,26 @@ def r13
   end
 end
 def r14
- puts "You are in a boring room."
+ puts "You are in a boring room. But there is a trick, if you don´t answer the next question correctly the master will steal your life"
+ puts "How can a man go eight days without sleep? Write the letter of the answer\n\ta)He sleeps at night\n\tb)A man has no name\n\tc)Being dead"
+ while true 
+	print ">"
+	answer = $stdin.gets.chomp
+	if answer == "a"
+	puts "Correct"
+	break
+	elsif answer == "b"
+	puts "Silly"
+	die_p
+	elsif answer == "c"
+	puts "Silly"
+	die_p
+	else
+	 puts "You are an idiot, type something that makes sense"
+	end
+ end
  cg_p(9)
+ pr_maze
  puts "There is a door to every cardinal point"
  puts "Which one do you take? n, s, w, or e"
  while true 
@@ -345,6 +474,7 @@ end
 def r15
  puts "You are in a boring room."
  cg_p(10)
+ pr_maze
  puts "There is a door to every cardinal point"
  puts "Which one do you take? n, s, w, or e"
 while true 
@@ -352,7 +482,7 @@ while true
   choice = $stdin.gets.chomp
   
   if choice == "n" 
-	gold_room
+	golden_room
   elsif choice == "s" 
 	mr2
   elsif choice == "w" 
@@ -365,8 +495,26 @@ while true
   end
 end
 def r16
- puts "You are in a boring room. Youmust be tired"
+ puts "You are in a boring room. But there is a trick, if you don´t answer the next question correctly the master will steal your life"
+ puts "What can you never eat for breakfast? Write the letter of the answer\n\ta)Dinner\n\tb)Veggies\n\tc)Yogurt"
+ while true 
+	print ">"
+	answer = $stdin.gets.chomp
+	if answer == "a"
+	puts "Correct"
+	break
+	elsif answer == "b"
+	puts "Silly"
+	die_p
+	elsif answer == "c"
+	puts "Silly"
+	die_p
+	else
+	 puts "You are an idiot, type something that makes sense"
+	end
+ end
  cg_p(0)
+ pr_maze
  puts "There is a door to in the back, and to the right."
  puts "Which one do you take?b or r"
   while true 
@@ -386,6 +534,7 @@ end
 def r17
  puts "You are in a boring room."
  cg_p(2)
+ pr_maze
  puts "There is a door to in the back, and to both sides."
  puts "Which one do you take?b, l or r"
   while true 
@@ -404,8 +553,26 @@ def r17
   end
 end
 def r18
- puts "You are in a boring room."
+ puts "You are in a boring room. But there is a trick, if you don´t answer the next question correctly the master will steal your life"
+ puts "How many times can you subtract 10 from 100?  Write the letter of the answer\n\ta)2\n\tb)1\n\tc)Many"
+ while true 
+	print ">"
+	answer = $stdin.gets.chomp
+	if answer == "a"
+	puts "Silly"
+	die_p
+	elsif answer == "b"
+	puts "Correct"
+	break
+	elsif answer == "c"
+	puts "Silly"
+	die_p
+	else
+	 puts "You are an idiot, type something that makes sense"
+	end
+ end
  cg_p(3)
+ pr_maze
  puts "There is a door to in the back, and to both sides."
  puts "Which one do you take?b, l or r"
   while true 
@@ -426,6 +593,7 @@ end
 def rr1
 system "cls"
 cg_p(39)
+
  puts "You are in a stupid room. Since you must be very dumb I will tell you something: Penguings have knees"
  puts "There is a door to in the front, and to the left."
  puts "Which one do you take?f or l"
@@ -446,6 +614,7 @@ end
 def rr2
  system "cls"
  cg_p(31)
+ pr_maze
  puts "You are in a stupid room. Since you must be very dumb I will tell you something: Female kangaroos have three vaginas"
   puts "There is a door to every cardinal point."
   puts "Which one do you take?n, s, w, or e"
@@ -469,6 +638,7 @@ end
 def rr3
  system "cls"
  cg_p(19)
+ pr_maze
  puts "You are in a stupid room. Since you must be very dumb I will tell you something: Everyone has a unique tongue print"
  puts "There is a door to every cardinal point."
  puts "Which one do you take?n, s, w, or e"
@@ -492,6 +662,7 @@ end
 def rr4
  system "cls"
  cg_p(11)
+ pr_maze
  puts "You are in a stupid room. Since you must be very dumb I will tell you something:  The largest snowflake ever recorded reportedly measured 15 inches across."
  puts "There is a door to in the back, and to the left."
  puts "Which one do you take?b or l"
@@ -511,6 +682,7 @@ end
 def br1
  system "cls"
  cg_p(26)
+ pr_maze
  puts "You are in a Bear room. What can you grab to kill it?"
  puts "Knife, spoon, broom"
  while true 
@@ -551,13 +723,15 @@ end
 def br2
  system "cls"
  cg_p(18)
+ pr_maze
+ puts " "
  puts "You are in a Bear room. What can you grab to kill it?"
  puts "machete, cadaver, candle"
   while true 
  print ">"
   c1 = $stdin.gets.chomp
   if c1 == "Machete" || c1 == "machete"
-	puts "You took the machete and stabbed that son of a bear."
+	puts "You take the machete and stabbed that son of a bear."
 	break
   elsif c1 == "cadaver" 
   puts "What were you thinking? Feeding the bear?. The bear ripped your arms appart"
@@ -589,6 +763,7 @@ end
 def br3
  system "cls"
  cg_p(6)
+ pr_maze
  puts "You are in a Bear room. What can you grab to kill it?"
  puts "beer bottle, pen, underwear"
   while true 
@@ -625,6 +800,7 @@ end
 def br4
  system "cls"
  cg_p(8)
+ pr_maze
  puts "You are in a Bear room. What can you grab to kill it?"
  puts "CD, mouse, honey"
  while true 
@@ -662,9 +838,10 @@ end
 def mr1
  system "cls"
  cg_p(30)
+ pr_maze
  puts "You are in a Master room."
  puts "The master says you should go up"
- pr_maze
+ ##pr_maze
  puts "There is a door to in the back, front, and to the right."
  puts "Which one do you take?b, f or r"
  while true 
@@ -688,7 +865,7 @@ def mr2
  pr_maze
  puts "You are in a Master room."
  puts "The master says you should go up"
- puts "There is a door to in the front, and to booth sides."
+ puts "There is a door in the front, and to booth sides."
  puts "Which one do you take?l, f or r"
  
  while true 
@@ -731,7 +908,10 @@ def die_p
 	puts "You got yourself killed"
 	puts "The hidden master had mercy on you, you can start over again"
 	puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" * 3
+	$maze = [" "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "," "," "," "," "," "," "," "," \n"," "," "," "," "," "," \n"," "," "," "," "]
+#		
 	start
 end
+
 start
   
