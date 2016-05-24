@@ -1,2 +1,2 @@
 # Ruby
-Rep for my ruby projects end
+Repository for my ruby projects 
