@@ -14,7 +14,7 @@ class Hall
 		return write
 	end
 end
-
+#This Room is ready to be use
 class Noobs < Room
 	def play
 		puts "Welcome to the Noobs Room"
@@ -48,11 +48,21 @@ class Noobs < Room
 		end
 		puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Flamethrower\n2.Machete\3.The morning after pill"
 		resp = $stdin.gets.chomp
-		return resp
+		if resp == 1
+			return "Flamethrower"
+		elsif resp == 2
+			return "Machete"
+		elsif resp == 3
+			return "The morning after pill"
+		else 
+			puts "You cant even do that right, you are gooing to regret that"
+			return resp
+		end
+		
 	end
 
 end
-
+#falta regalarle algo aqui al player y optimizar la manera en que se mueren y ganan
 class InitR < Room
 	def play
 		puts "Welcome to the Init Room"
@@ -69,6 +79,21 @@ class InitR < Room
 					answer = $stdin.gets.chomp
 					if answer == "d"
 					puts "Correct."
+					puts "Now you  get to face an enemy, if you choose the wrong number....I know you are confused, because your face looks like a rat kissed it."
+					puts "Let me tell you how it works, write a number between 1 and 5, only one number awakes the hidden alien, you heard right, Baldor hide an alien and put it to sleep here."
+					while true
+						print "Write the number: >"
+						answer = $stdin.gets.chomp
+						if answer == 4
+						puts "You have found the alien and he is mad AF, mad enough to kill you"
+						puts "YOU ARE DEAD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+						return 0
+						elsif answer > 5
+							puts "You are an idiot,  write a valid number"
+						else
+							puts "Congratulations!!!!There was only dust in here"
+						end 
+					end
 					break
 					elsif answer == "c" || answer == "a" || answer == "b" 
 					puts "WRONG ANSWER!!!!!!!!!!!!\nThe ghost of Baldor killed you"
@@ -95,12 +120,12 @@ class InitR < Room
 	end
 
 end
-
+#This Room is ready to be use
 class Horror < Room
-	def play
+	def play (item_list)
+	@items = item_list
 		puts "Welcome to the Horror Room"
-		puts "Here you have to prove you know some basic math."
-		win = true
+		puts "Here you have to prove you know some basic math. And defeat a enemy"
 		while true
 		print "Are you ready? Y/N "
 		ready = $stdin.gets.chomp
@@ -111,13 +136,44 @@ class Horror < Room
 					print ">"
 					answer = $stdin.gets.chomp
 					if answer == "c"
-					puts "Correct."
-					break
+						puts "Correct."
+						puts "Now you  get to face an enemy. Your enemy here is a teenager that just had sex, and forgot to use protection"
+						puts "She is concern her parent might kill her, so she will kill you  to eat your balls as a DIY contraception method"
+						puts "Here is the list of your items. Choose what to use againts this 	psycho"
+						c = 1 #What we are going to use to locate the item on the array
+						@items.each do |i|
+							print c + i
+							c += 1
+						end
+						while true
+							print "Write the number of tthe desired item: >"
+							answer = $stdin.gets.chomp
+							if @item_list.[c-1] == "The morning after pill" || @item_list.[c-1] == "Flamethrower" || @item_list.[c-1] == "Machete"
+								puts "Good brain use technique"
+								puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Harry Potter Book\n2.Bird\3.Super glue"
+								resp = $stdin.gets.chomp
+								if resp == 1
+									retun "Harry Potter Book"
+								elsif resp == 2
+									retun "Bird"
+								elsif resp == 3
+									retun "Super glue"
+								else
+									return resp
+								end
+							elsif answer > @item_list
+								puts "You are an idiot,  write a valid number"
+							else
+								puts "Congratulations!!!!You are dead"
+								return 0
+							end 
+						end
+						break
 					elsif answer == "d" || answer == "a" || answer == "b" 
-					puts "WRONG ANSWER!!!!!!!!!!!!\nThe ghost of Baldor killed you"
-					win = false
+						puts "WRONG ANSWER!!!!!!!!!!!!\nThe ghost of Baldor killed you"
+						return 0
 					else
-					puts "plase check your answer"
+						puts "plase check your answer"
 					end
 				end
 			break
@@ -127,14 +183,10 @@ class Horror < Room
 				puts "Please type Y or N"
 			end 
 		end
-		if win 
-			puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Flamethrower\n2.Machete\3.The morning after pill"
-			resp = $stdin.gets.chomp
-			return resp
-		else 
+		 		
 			puts "No more games for you, press ctrl+c"
 			return 0 
-		end
+		
 	end
 
 end
@@ -149,7 +201,7 @@ class Boss < Room
 		ready = $stdin.gets.chomp
 			if ready == "Y" || ready == "y"
 				puts "Choose the letter with the correct answer"
-				puts "Which one is the answer to this problem: If Kimmy is one year older than Tommy 3 years ago, Tommy is one quater of Alice age , and Alice is 40, How old is Kimmy\na.)4\tb.)F*ck the police\nc.)42\t.d.8"
+				puts "Which one is the answer to this problem: if f(x)= x^4 − 2x^2 − 3, x is equal to\na.)Impossible to resolve\tb.)a number\nc.)42\t.d.√3"
 				while true
 					print ">"
 					answer = $stdin.gets.chomp
