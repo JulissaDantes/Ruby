@@ -9,17 +9,16 @@ end
 
 class Hall
 	def play
-		puts "Returning a string"
+		puts "There are 4 doors ans¿d one exit. Choose a number between 1 and 4 for the doors and 5 only if you have the key to the exit"
 		write = $stdin.gets.chomp
 		return write
 	end
 end
-#This Room is ready to be use
+#Ready 
 class Noobs < Room
 	def play
 		puts "Welcome to the Noobs Room"
-		puts "Here you just have to prove you know some basic math."
-				
+		puts "Here you just have to prove you know some basic math."		
 		while true
 		print "Are you ready? Y/N "
 		ready = $stdin.gets.chomp
@@ -32,9 +31,21 @@ class Noobs < Room
 					answer = $stdin.gets.chomp
 					if answer == "b"
 					puts "Correct."
+					puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Flamethrower\n2.Machete\3.The morning after pill"
+					resp = $stdin.gets.chomp
+					if resp == 1
+						return "Flamethrower"
+					elsif resp == 2
+						return "Machete"
+					elsif resp == 3
+						return "The morning after pill"
+					else 
+						puts "You cant even do that right, you are gooing to regret that"
+						return resp
+					end
 					break
 					elsif answer == "c" || answer == "a" || answer == "d" 
-					puts "WRONG ANSWER!!!!!!!!!!!!\nThis is the only room where a wrong answer wont kill you so be carefull"
+					puts "WRONG ANSWER!!!!!!!!!!!!\nThis is the only room where a wrong answer wont kill you so be carefull and try again"
 					else
 					puts "plase check your answer"
 					end
@@ -46,23 +57,10 @@ class Noobs < Room
 				puts "Please type Y or N"
 			end 
 		end
-		puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Flamethrower\n2.Machete\3.The morning after pill"
-		resp = $stdin.gets.chomp
-		if resp == 1
-			return "Flamethrower"
-		elsif resp == 2
-			return "Machete"
-		elsif resp == 3
-			return "The morning after pill"
-		else 
-			puts "You cant even do that right, you are gooing to regret that"
-			return resp
-		end
-		
 	end
 
 end
-#falta regalarle algo aqui al player y optimizar la manera en que se mueren y ganan
+#Ready
 class InitR < Room
 	def play
 		puts "Welcome to the Init Room"
@@ -92,6 +90,17 @@ class InitR < Room
 							puts "You are an idiot,  write a valid number"
 						else
 							puts "Congratulations!!!!There was only dust in here"
+							puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Hunger Games Book\n2.Pencil\3.Teddy Bear"
+								resp = $stdin.gets.chomp
+								if resp == 1
+									retun "Hunger Games Book"
+								elsif resp == 2
+									retun "Pencil"
+								elsif resp == 3
+									retun "Teddy Bear"
+								else
+									return resp
+								end
 						end 
 					end
 					break
@@ -109,18 +118,10 @@ class InitR < Room
 				puts "Please type Y or N"
 			end 
 		end
-			if win 
-			puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Flamethrower\n2.Machete\3.The morning after pill"
-			resp = $stdin.gets.chomp
-			return resp
-		else 
-			puts "No more games for you, press ctrl+c"
-			return 0 
-		end
 	end
 
 end
-#This Room is ready to be use
+#Ready 
 class Horror < Room
 	def play (item_list)
 	@items = item_list
@@ -147,7 +148,7 @@ class Horror < Room
 						end
 						while true
 							print "Write the number of tthe desired item: >"
-							answer = $stdin.gets.chomp
+							c = $stdin.gets.chomp
 							if @item_list.[c-1] == "The morning after pill" || @item_list.[c-1] == "Flamethrower" || @item_list.[c-1] == "Machete"
 								puts "Good brain use technique"
 								puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Harry Potter Book\n2.Bird\3.Super glue"
@@ -161,7 +162,7 @@ class Horror < Room
 								else
 									return resp
 								end
-							elsif answer > @item_list
+							elsif c > @item_list.length
 								puts "You are an idiot,  write a valid number"
 							else
 								puts "Congratulations!!!!You are dead"
@@ -190,27 +191,70 @@ class Horror < Room
 	end
 
 end
-
+#Ready 
 class Boss < Room
 	def play
 		puts "Welcome to the Boss Room"
 		puts "Here you have to kill DA BOSS, and   you know some basic math."
-				win = true
 		while true
 		print "Are you ready? Y/N "
 		ready = $stdin.gets.chomp
 			if ready == "Y" || ready == "y"
 				puts "Choose the letter with the correct answer"
-				puts "Which one is the answer to this problem: if f(x)= x^4 − 2x^2 − 3, x is equal to\na.)Impossible to resolve\tb.)a number\nc.)42\t.d.√3"
+				puts "Which one is the answer to this problem: if f(x)= x^4 − 2x^2 − 3, x is equal to\na.)Impossible to solve\tb.)a number\nc.)42\t.d.√3"
 				while true
 					print ">"
 					answer = $stdin.gets.chomp
 					if answer == "d"
 					puts "Correct."
+					puts "Now you  get to face an enemy. Your enemy here is a Math teacher, a silly one, the kind that thinks he knows everything but is always wrong"
+					puts "She is concern her parent might kill her, so she will kill you  to eat your balls as a DIY contraception method"
+					puts "Here is the list of your items. Choose what to use againts this 	psycho"
+					c = 1
+					@items.each do |i|
+						print c + i
+						c += 1
+					end
+					while true
+						print "Write the number of tthe desired item: >"
+						c = $stdin.gets.chomp
+						if @item_list.[c-1] == "Flamethrower" || @item_list.[c-1] == "Machete"
+							puts "Good brain use technique"
+							puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Bird\n2.Blasteroid\3.A Dragon"
+							resp = $stdin.gets.chomp
+							if resp == 1
+								return "Bird"
+							elsif resp == 2
+								return "Blasteroid"
+							elsif resp == 3
+								return "A Dragon"
+							else
+								return resp
+							end
+						elsif @item_list.[c-1] == "Bird"
+							puts "How did you know he loves birds?"
+							puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Bird\n2.Blasteroid\3.A Key to open the exit door"
+							resp = $stdin.gets.chomp
+							if resp == 1
+								return "Bird"
+							elsif resp == 2
+								return "Blasteroid"
+							elsif resp == 3
+								return "Key to open the exit door"
+							else
+								return resp
+							end
+						elsif c > @item_list.length
+							puts "You are an idiot,  write a valid number"
+						else
+							puts "Congratulations!!!!You are dead"
+								return 0
+						end 
+					end
 					break
 					elsif answer == "c" || answer == "a" || answer == "b" 
 					puts "WRONG ANSWER!!!!!!!!!!!!\nThe ghost of Baldor killed you"
-					win = false
+					return 0
 					else
 					puts "plase check your answer"
 					end
@@ -221,15 +265,7 @@ class Boss < Room
 			else
 				puts "Please type Y or N"
 			end 
-		end
-		if win 
-			puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Flamethrower\n2.Machete\3.The morning after pill"
-			resp = $stdin.gets.chomp
-			return resp
-		else 
-			puts "No more games for you, press ctrl+c"
-			return 0 
-		end
+		end		
 	end
 
 end
