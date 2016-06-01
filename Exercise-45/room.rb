@@ -9,7 +9,8 @@ end
 
 class Hall
 	def play
-		puts "There are 4 doors ans¿d one exit. Choose a number between 1 and 4 for the doors and 5 only if you have the key to the exit"
+		puts "     There are 4 doors and one exit. \n\tChoose a number between 1 and 4 for the doors and 5 only if you have the key to the exit"
+		print ">"
 		write = $stdin.gets.chomp
 		return write
 	end
@@ -41,7 +42,7 @@ class Noobs < Room
 						return "The morning after pill"
 					else 
 						puts "You cant even do that right, you are gooing to regret that"
-						return resp
+						return resp, "Key 2"
 					end
 					break
 					elsif answer == "c" || answer == "a" || answer == "d" 
@@ -60,7 +61,7 @@ class Noobs < Room
 	end
 
 end
-#Ready
+#Here check object usage
 class InitR < Room
 	def play
 		puts "Welcome to the Init Room"
@@ -149,7 +150,9 @@ class Horror < Room
 						while true
 							print "Write the number of tthe desired item: >"
 							c = $stdin.gets.chomp
-							if @item_list.[c-1] == "The morning after pill" || @item_list.[c-1] == "Flamethrower" || @item_list.[c-1] == "Machete"
+							c = c.to_i
+							c -= 1
+							if @item_list[c] == "The morning after pill" || @item_list[c] == "Flamethrower" || @item_list[c] == "Machete"
 								puts "Good brain use technique"
 								puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Harry Potter Book\n2.Bird\3.Super glue"
 								resp = $stdin.gets.chomp
@@ -218,7 +221,9 @@ class Boss < Room
 					while true
 						print "Write the number of tthe desired item: >"
 						c = $stdin.gets.chomp
-						if @item_list.[c-1] == "Flamethrower" || @item_list.[c-1] == "Machete"
+						c = c.to_i
+						c -= 1
+						if @item_list[c] == "Flamethrower" || @item_list[c] == "Machete"
 							puts "Good brain use technique"
 							puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Bird\n2.Blasteroid\3.A Dragon"
 							resp = $stdin.gets.chomp
@@ -231,7 +236,7 @@ class Boss < Room
 							else
 								return resp
 							end
-						elsif @item_list.[c-1] == "Bird"
+						elsif @item_list[c] == "Bird"
 							puts "How did you know he loves birds?"
 							puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Bird\n2.Blasteroid\3.A Key to open the exit door"
 							resp = $stdin.gets.chomp
