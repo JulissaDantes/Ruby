@@ -1,8 +1,9 @@
 class Room
-
-	def initialize(name, enemy)
+@door = Door.new(false)
+	def initialize(name, enemy, open)
 		@name = name
 		@enemy = enemy
+		@door.open = open 
 	end
 
 end
@@ -276,9 +277,11 @@ class Boss < Room
 end
 
 class Door
-	def initialize(number, open, room)
-		@number = number
+	def initialize(open)
 		@open = open #si esta abierta o cerrada es booleano
-		@room = room
+	end
+	
+	def close
+		@open = false
 	end
 end
