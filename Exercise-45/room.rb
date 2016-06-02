@@ -195,7 +195,7 @@ class Horror < Room
 						puts "Now you  get to face an enemy. Your enemy here is a teenager that just had sex, and forgot to use protection"
 						puts "She is concern her parent might kill her, so she will kill you  to eat your balls as a DIY contraception method"
 						puts "Here is the list of your items. Choose what to use againts this 	psycho"
-						c = 1 #What we are going to use to locate the item on the array
+						c = 1 
 						@items.each do |i|
 							puts ""
 							print c 
@@ -350,8 +350,11 @@ Not only did you prove you are a Math Guru
 You also killed 3 monsters
 			\3
 """
-retun 0
+retun 1
 
 end
-
+	def open(items)
+		@items = items
+		@door = true
+end
 end
