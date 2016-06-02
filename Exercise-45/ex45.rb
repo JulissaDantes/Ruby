@@ -37,12 +37,13 @@ while  items.last != 1
 				items.each do |i|
 					if i == "Key to open the exit door"
 						rooms[c].play()
-					else
-						puts "You didn´t get the key to this room, go back to the Boss room to get the key."
-						puts "Hint: This teacher loves flying animals, so go back to the other rooms if you dont have one"
+					
 					end
 				end
-				
+				if rooms[c].instance_variable_get(:@door) == false
+					puts "You didn´t get the key to this room, go back to the Boss room to get the key."
+					puts "Hint: This teacher loves flying animals, so go back to the other rooms if you dont have one"
+				end
 			end
 		else
 			if rooms[c-1].instance_variable_get(:@door)
