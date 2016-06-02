@@ -258,6 +258,7 @@ end
 class Boss < Room
 	def play(items)
 	@items = items
+	system "cls"
 		puts "Welcome to the Boss Room"
 		puts "Here you have to kill DA BOSS, and   you know some basic math."
 		while true
@@ -300,7 +301,7 @@ class Boss < Room
 							else
 								return resp.to_i
 							end
-						elsif @item_list[c] == "Bird"
+						elsif @items[c] == "Bird"
 							puts "How did you know he loves birds?"
 							puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Bird\n2.Blasteroid\n3.A Key to open the exit door"
 							print "\nWrite the number: > "
@@ -350,7 +351,7 @@ Not only did you prove you are a Math Guru
 You also killed 3 monsters
 			\3
 """
-retun 1
+return 1
 
 end
 	def open(items)
