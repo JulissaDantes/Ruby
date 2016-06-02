@@ -8,11 +8,11 @@
 # There's plenty of ways to do this, but consider having each room return what room is next or setting a variable of what room is next.
 require "./room.rb"
 system "cls"
-print "\t\t\t\t\n\n                   The Math Hall\n"
+print "\t\t\t\t\n\nThe Math Hall\n"
 puts "\tYou are locked in a hall with 4 doors leading to 4 different rooms and one exit,\n\tBaldor's ghost is here to help you, but if you are not smart he will kill you \n\t:) Enjoy!\n"
 items = []
 $pasillo = Hall.new()
-rooms = [Noobs.new("Begins","Math", true), InitR.new("Continues","Alien", false), Horror.new("Almost finish","Teen", false), Boss.new("The end","Devilish", false)]
+rooms = [Noobs.new("Begins","Math", true), InitR.new("Continues","Alien", false), Horror.new("Almost finish","Teen", false), Boss.new("The end","Devilish", false), ExitH("Freedom","Nothing", false)]
 
 #esto no va asi
 #items << $pasillo.play()
@@ -27,8 +27,19 @@ while true
 		#aqui validar si la room tiene llave o no
 		if c == 1 
 			items << rooms[c-1].play()
+			if items.last != 0
+				rooms[c].open 
+			end
 		else
-			items << rooms[c-1].play(items)
+			if rooms[c-1].instance_variable_get(:@door)
+				items << rooms[c-1].play(items)
+			else
+				puts "You dont have the keys to this room, to open it defeat the previous room"
+			end
+			
+			if items.last != 0
+				rooms[c].open
+			end
 		end
 
 	end
