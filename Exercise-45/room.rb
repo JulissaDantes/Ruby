@@ -12,8 +12,8 @@ end
 class Hall
 	def play
 	
-		puts "     \n \n\tChoose a number between 1 and 4 for the doors and 5 only if you have the key to the exit"
-		print ">"
+		puts "\n \n\tChoose a number between 1 and 4 for the doors and 5 only if you have the key to the exit"
+		print "> "
 		write = $stdin.gets.chomp
 		return write
 	end
@@ -65,7 +65,7 @@ class Noobs < Room
 			end 
 		end
 	end
-
+	
 end
 #WIP
 class InitR < Room
@@ -137,7 +137,9 @@ class InitR < Room
 			end 
 		end
 	end
-
+def open
+	@door = true
+end
 end
 #Ready 
 class Horror < Room
@@ -215,7 +217,9 @@ class Horror < Room
 			return 0 
 		
 	end
-
+def open
+	@door = true
+end
 end
 #Ready 
 class Boss < Room
@@ -238,18 +242,21 @@ class Boss < Room
 					puts "Here is the list of your items. Choose what to use againts this dude"
 					c = 1
 					@items.each do |i|
-					#que no imprima los vacios
-						puts c + ". " + i + "\n"
-						c += 1
+						puts ""
+							print c 
+							print ". " 
+							print i
+							c += 1
 					end
 					while true
-						print "Write the number of the desired item: > "
+						print "\nWrite the number of the desired item: > "
 						c = $stdin.gets.chomp
 						c = c.to_i
 						c -= 1
 						if @items[c] == "Flamethrower" || @items[c] == "Machete"
 							puts "Good brain use technique"
 							puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Bird\n2.Blasteroid\n3.A Dragon"
+							print "\nWrite the number: > "
 							resp = $stdin.gets.chomp							
 							if resp.to_i == 1
 								return "Bird"
@@ -263,7 +270,7 @@ class Boss < Room
 						elsif @item_list[c] == "Bird"
 							puts "How did you know he loves birds?"
 							puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Bird\n2.Blasteroid\n3.A Key to open the exit door"
-							print "Write the number: > "
+							print "\nWrite the number: > "
 							resp = $stdin.gets.chomp
 							if resp.to_i == 1
 								return "Bird"
@@ -297,6 +304,21 @@ class Boss < Room
 			end 
 		end		
 	end
+def open
+	@door = true
+end
+end
+
+class ExitH < Room
+def play
+puts """
+		CONGRATULATIONS
+Not only did you prove you are a Math Guru
+You also killed 3 monsters
+			\3
+"""
+retun 0
 
 end
 
+end
