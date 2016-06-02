@@ -97,10 +97,43 @@ class InitR < Room
 						puts "Here is the list of your items. Choose what to use againts this psycho"
 						c = 1 
 						@items.each do |i|
-							#"chequear que no imprima si el string esta vacio"
-							puts c + ". " + i + "\n"
+							puts ""
+							print c 
+							print ". " 
+							print i
 							c += 1
 						end
+						print "\nWrite the number of the desired item"
+						resp = $stdin.gets.chomp
+						resp = resp.to_i
+						while true
+							print "\nWrite the number of the desired item: > "
+							c = $stdin.gets.chomp
+							c = c.to_i
+							c -= 1
+							if @items[c] == "Flamethrower" || @items[c] == "Machete"
+								puts "\nGood"
+								puts "Congratulations, Mr.Baldor is holding three items for you to use, choose one writing the number of the item: \n1.Harry Potter Book\n2.Bird\n3.Super glue"
+								print "\nWrite the number: > "
+								resp = $stdin.gets.chomp
+								resp = resp.to_i
+								if resp.to_i == 1
+									return "Harry Potter Book"
+								elsif resp.to_i == 2
+									return "Bird"
+								elsif resp.to_i == 3
+									return "Super glue"
+								else
+									return resp
+								end
+							elsif c > @items.length
+								puts "You are an idiot,  write a valid number"
+							else
+								puts "Congratulations!!!!You are dead"
+								return 0
+							end 
+						end
+						break
 						puts "YOU ARE DEAD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 						return 0
 						elsif answer > 5
@@ -137,7 +170,7 @@ class InitR < Room
 			end 
 		end
 	end
-def open
+	def open
 	@door = true
 end
 end
